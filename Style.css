@@ -1,0 +1,81 @@
+ /* max size for images etc. */
+img,
+picture,
+video {
+      max-width: 100%;
+    }
+
+    /* font */
+    html {
+      font-size: 1em;
+      font-family: sans-serif;
+    }
+
+    h1 {
+      font-size: 3em;
+      color:rgba(0, 140, 255, 0.212)
+    }
+
+    h2 {
+      font-size: 2em;
+    }
+
+
+    /* navigation style css */
+    .wrapper>div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+    }
+
+    @media screen and (width > 600px) {
+      .wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 1em;
+        padding: 1em;
+      }
+    }
+
+    .banner {
+      display: grid;
+      place-items: center;
+      background-color: rgba(0, 140, 255, 0.13);
+      padding: 10px;
+    }
+
+    button {
+      background-color: rgba(0, 140, 255, 0.212);
+      padding: 15px;
+      margin: 10px;
+      height: 50px;
+      border: rgba(0, 140, 255, 0.212), solid, 2px;
+      border-radius: 20px;
+
+      a:link {
+        color: black
+      }
+
+      a:link,
+      a:visited,
+      a:hover,
+      a:active {
+        text-decoration: none;
+
+      }
+    }
+
+    .infogrid>div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media screen and (width > 600px) {
+      .infogrid {
+        display: grid;
+        grid-template-columns: 30fr 2fr 30fr 2fr 30fr;
+        grid-gap: 1em;
+        padding: 1em;
+      }
+    }

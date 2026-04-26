@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <title>How to Name Cats for Adoption</title>
+
+<!-- Moved CSS to separate style sheet   -->
+<link rel="stylesheet" href="Style.css">
+
+<!-- <link rel="component" href="components/Button.js"> -->
+<!-- <link rel="component" href="components/Header.js"> -->
+<!-- <link rel="component" href="components/Effects.js"> -->
+
+<!-- Link components -->
+<script type="module" src="Button.js"></script>
+<script type="module" src="Effects.js"></script>
+<script type="module" src="Header.js"></script>
+
+<script>
+//set function for cat api images
+ async function getData() {
+  const url = "https://api.thecatapi.com/v1/images/search";
+  try {
+    const response = await fetch(url, {
+      method: "GET" ,
+      headers: {
+        "x-api-key": "live_PqlYHyAMIQMvJM3MzVI69uJy20xdgSQ3olUXenGEgm4lWl0RkODzqyZNgTLGzn1e"
+      }
+    });
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log(result);
+    return result
+  } catch (error) {
+    console.error(error.message);
+  }
+} 
+
+</script>
+<script>
+  //funtion for cat names (catnames api) for alt and title attributes of cat images
+  async function nameCat() {
+    try {
+      const response = await fetch("https://tools.estevecastells.com/api/cats/v1")
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+      const result = await response.json();
+      return result[0]
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+</script>
+
+</head>
+
+<body>
+
+<header>
+  <h1>How to Name Cats for Adoption</h1>
+  <h2>Tips and Ideas</h2>
+
+  <div class="wrapper">
+    <div class="column1">
+      <img src="https://i.pinimg.com/736x/50/05/32/500532bedf8d70e34dfa37d6da1ddf81.jpg" alt="cat doodle logo"
+        width="100" />
+    </div>
+
+    <div class="column2">
+      <Button id="why-button" type="Button" onclick="location.hash='why'">Why Names Matter</button>
+      
+    </div>
+
+    <div class="column3">
+      <button id="considerations-button" type="button" onclick="location.hash='considerations'">Considerations</button>
+    </div>
+
+    <div class="column4">
+      <button id="popular-button" type="button" onclick="location.hash='popular'">Popular Catogories</button>
+    </div>
+  </div>
+
+</header>
+  <br>
+  <div class="banner" id="banner">
+    <br>
+    <!--placeholder image for cat api-->
+    <img src="https://live.staticflickr.com/2877/11412021083_17843d71cc_b.jpg" alt="Two young cats cuddling"
+      width="300" />
+      </div>
+    <div>
+    <br>
+    <div class="buttonrow">
+    </div>
+    <button type="button"><strong>Meet Your Cat Today!</strong></button>
+    <br>
+  </div>
+
+  <div class="infogrid">
+    <div class="infogrid1">
+      <section id="why">
+        <h3>Why Names Matter</h3>
+        <p>When seeking homes for shelter or rescue cats giving the cats catchy names can help them garner attention and
+          find their future families.
+        </p>
+      </section>
+    </div>
+
+
+    <br>
+    <div class="infogrid2">=
+      <section id="considerations">
+        <h3>Considerations</h3>
+        <p>Some considerations when naming cats are as follows:
+        </p>
+        <ul>
+          <li>Are any of the cats bonded pairs?</li>
+          <li>What are the demographics of cat adopters in your area?</li>
+          <li>What demographics do your shelter's marketing efforts reach outside of your area? (Only applicable if your
+            shelter allows out-of-area adoptions.)</li>
+          <li>What names will stand out from the other cats your shelter has available?</li>
+        </ul>
+      </section>
+    </div>
+
+
+    <br>
+    <div class="infogrid3">
+      <section id="popular">
+        <h3>Popular Categories</h3>
+        <!--ideas for naming cats, no specific examples-->
+        <p>We have listed some popular types of names for cats below. It is best to think about what would appeal to the
+          demographics you are trying to reach for adoption when naming shelter cats. If you are naming multiple cats
+          that
+          you wish to adopt out together, such as a bonded pair or litter mates, it can be helpful to give them names
+          that
+          go
+          together in theme and or style.</p>
+        <ul>
+          <li>Fast food menu items</li>
+          <li>Punny names based off of pop culture or historical figures</li>
+          <li>Names of mythological figures or creatures</li>
+          <li>Old-fashioned or formal names</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
+<script>
+  //calls function to update cat image
+const container = document.getElementById('banner');
+let img;
+async function updateCat() {
+  try {
+    const data = await getData();
+    if (!data || !data.length) {
+      container.textContent = 'No image available';
+      return;
+    }
+    //calls cat name function to set alt and title attributes of cat images
+    const { url, id = 'cat' } = data[0];
+    if (!img) {
+      img = document.createElement('img');
+      container.textContent = '';
+      container.appendChild(img);
+    }
+    img.src = url;
+    img.width=300;
+    const catName = await nameCat();
+    img.alt = catName;
+    img.title = catName;
+    //set error message if cat image fails to load
+  } catch (err) {
+    container.textContent = 'Failed to load cat image';
+    console.error(err);
+  }
+}
+//set cat image to liveupdate without refreshing page, updates every 10 seconds
+updateCat();
+setInterval(updateCat, 10000);
+</script>
+
+<div>
+  <Button id="click-button">Click Me</Button>
+</div>
+
+  <!-- <script> -->
+    <!-- document.getElementById('app-button').addEventListener('click', function() { -->
+      <!-- console.log('Clicked!'); -->
+    <!-- }); -->
+  <!-- </script> -->
+</div>
+
+
+<footer>
+  <!--copywrite info-->
+  <p>© 2025 Sara Bass</p>
+</footer>
+
+</body>
+</html>
