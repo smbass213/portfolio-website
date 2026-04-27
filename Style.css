@@ -13,7 +13,7 @@ video {
 
     h1 {
       font-size: 3em;
-      color:rgba(0, 140, 255, 0.212)
+      color:rgb(0, 140, 255)
     }
 
     h2 {
@@ -45,13 +45,15 @@ video {
       padding: 10px;
     }
 
-    button {
-      background-color: rgba(0, 140, 255, 0.212);
+    .button {
+      background-color: rgb(60, 163, 242);
       padding: 15px;
       margin: 10px;
       height: 50px;
-      border: rgba(0, 140, 255, 0.212), solid, 2px;
+      border: 2px solid rgba(73, 166, 242, 0.664);
       border-radius: 20px;
+      color: white;
+    }
 
       a:link {
         color: black
@@ -64,8 +66,7 @@ video {
         text-decoration: none;
 
       }
-    }
-
+    
     .infogrid>div {
       display: flex;
       flex-direction: column;
@@ -79,6 +80,8 @@ video {
         padding: 1em;
       }
     }
+
+/* dark mode */
     :root {
   --bg-color: #ffffff;
   --text-color: #000000;
@@ -89,7 +92,7 @@ body.dark-mode {
   --text-color: #ffffff;
 }
 
-body {
+  body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
