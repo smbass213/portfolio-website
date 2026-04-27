@@ -41,7 +41,7 @@ video {
     .banner {
       display: grid;
       place-items: center;
-      background-color: rgba(0, 140, 255, 0.13);
+      background-color: rgb(0, 90, 164);
       padding: 10px;
     }
 
