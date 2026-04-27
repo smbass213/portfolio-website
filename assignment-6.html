@@ -23,16 +23,16 @@
     </div>
 
     <div class="column2">
-      <Button id="why-button" type="Button" onclick="location.hash='why'">Why Names Matter</button>
+      <Button class="button" id="why-button" type="Button" onclick="location.hash='why'">Why Names Matter</button>
       
     </div>
 
     <div class="column3">
-      <button id="considerations-button" type="button" onclick="location.hash='considerations'">Considerations</button>
+      <button class="button" id="considerations-button" type="button" onclick="location.hash='considerations'">Considerations</button>
     </div>
 
     <div class="column4">
-      <button id="popular-button" type="button" onclick="location.hash='popular'">Popular Catogories</button>
+      <button class="button" id="popular-button" type="button" onclick="location.hash='popular'">Popular Catogories</button>
     </div>
   </div>
 
@@ -47,7 +47,7 @@
     <div>
     <br>
     <div class="buttonrow">
-    <button type="button"><a href="https://jaxhumane.org/adopt/cats/" target="_blank"><strong>Meet Your Cat Today!</strong></a></button>
+    <button class="button" type="button"><a href="https://jaxhumane.org/adopt/cats/" target="_blank"><strong>Meet Your Cat Today!</strong></a></button>
     <br>
   </div>
 
@@ -102,7 +102,7 @@
   </div>
 </div>
 
-<button id="theme-toggle">Toggle Dark Mode</button>
+<button class="button" type="button" id="theme-toggle">Toggle Dark Mode</button>
 
 <footer>
   <!--copywrite info-->
@@ -112,7 +112,8 @@
   const btn = document.getElementById("theme-toggle");
 
 btn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
+  document.body.classList.toggle("dark-mode")
+  document.button.classList.toggle("dark-mode");
 });
 
 </script>
